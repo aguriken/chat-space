@@ -1,0 +1,61 @@
+.chat-side
+  .chat-user
+    %h5.chat-user__name kenichi
+    .chat-user__actions
+      =link_to 'http://google.co.jp' ,class: "chat-user__actions--action" do
+        = fa_icon "pencil-square-o"
+      =link_to 'http://google.co.jp' ,class: "chat-user__actions--action" do
+        = fa_icon "cog"
+  %ul.chat-groups
+    %li.chat-groups__group
+      %p.chat-groups__group--name yamakashiii
+      %p.chat-groups__group--message ken
+    %li.chat-groups__group
+      %p.chat-groups__group--name yyyy
+      %p.chat-groups__group--message kenichi
+    %li.chat-groups__group
+      %p.chat-groups__group--name 1111
+      %p.chat-groups__group--message まだメッセージはありません。
+    %li.chat-groups__group
+      %p.chat-groups__group--name 222
+      %p.chat-groups__group--message time gose by
+.chat-main
+  .chat-header
+    .chat-header__left
+      %h2 yamakashiii
+      %p
+        Members:
+        %span.chat-header__left--user
+          kenichi
+        %span.chat-header__left--user
+          arakawa
+    .chat-header__right
+      = link_to 'Edit', 'http://google.co.jp' ,class: "chat-header__right__edit-btn"
+  .chat-body
+    %ul.chat-messages
+      %li.chat-messages__message
+        .chat-messages__message__header
+          %p.chat-messages__message__header--name kenichi
+          %p.chat-messages__message__header--time 2017/05/13 10:08:32
+        %p.chat-messages__message__content ttt
+      %li.chat-messages__message
+        .chat-messages__message__header
+          %p.chat-messages__message__header--name kenichi
+          %p.chat-messages__message__header--time 2017/05/15 02:10:33
+        %p.chat-messages__message__content hello world
+      %li.chat-messages__message
+        .chat-messages__message__header
+          %p.chat-messages__message__header--name kenichi
+          %p.chat-messages__message__header--time 2017/05/15 10:25:23
+        %p.chat-messages__message__content nnnn
+      %li.chat-messages__message
+        .chat-messages__message__header
+          %p.chat-messages__message__header--name kenichi
+          %p.chat-messages__message__header--time 2017/05/18 05:16:15
+        %p.chat-messages__message__content ken
+  .chat-footer
+    .chat-footer__body
+      = text_area_tag :body, '', class: 'chat-footer__body--text', rows: 1, placeholder: 'type a message'
+      = label :image, '', class: "chat-footer__body--file" do
+        = fa_icon "picture-o"
+    = link_to 'Send', 'http://google.co.jp' ,class: "chat-footer__send-btn"
