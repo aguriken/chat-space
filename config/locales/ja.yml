@@ -4,6 +4,8 @@ ja:
     password: パスワード
     group_id: グループ名
     user: ユーザー
+    password_confirmation: 確認用パスワード
+    current_password: 現在のパスワード
   date:
     abbr_day_names:
     - 日
