@@ -47,5 +47,6 @@ end
 gem 'haml-rails'
 gem 'erb2haml'
 gem "font-awesome-rails"
-
+gem 'devise'
+gem 'pry-rails'
 
