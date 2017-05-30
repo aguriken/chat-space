@@ -1,24 +1,19 @@
 .chat-side
   .chat-user
-    %h5.chat-user__name kenichi
+    %h5.chat-user__name
+      = current_user.name
     .chat-user__actions
       =link_to new_group_path ,class: "chat-user__actions--action" do
         = fa_icon "pencil-square-o"
       =link_to edit_user_registration_path ,class: "chat-user__actions--action" do
         = fa_icon "cog"
   %ul.chat-groups
-    %li.chat-groups__group
-      %p.chat-groups__group--name yamakashiii
-      %p.chat-groups__group--message ken
-    %li.chat-groups__group
-      %p.chat-groups__group--name yyyy
-      %p.chat-groups__group--message kenichi
-    %li.chat-groups__group
-      %p.chat-groups__group--name 1111
-      %p.chat-groups__group--message まだメッセージはありません。
-    %li.chat-groups__group
-      %p.chat-groups__group--name 222
-      %p.chat-groups__group--message time gose by
+    - @groups.each do |group|
+      %li.chat-groups__group
+        %p.chat-groups__group--name
+          = group.name
+        %p.chat-groups__group--message
+          = @message
 .chat-main
   .chat-header
     .chat-header__left
