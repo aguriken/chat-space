@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
 
-  def nwe
+  def new
     @group = Group.new
   end
 
