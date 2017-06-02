@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
 
+  before_action :set_current_group, only: [:edit, :update]
+
   def new
     @group = Group.new
   end
@@ -16,12 +18,10 @@ class GroupsController < ApplicationController
 
   def edit
     @users = User.all
-    @group = Group.find(params[:id])
     @group_users = @group.users
   end
 
   def update
-    @group = Group.find(params[:id])
     if @group.update(group_params)
       redirect_to root_path, notice: "グループ更新しました"
     else
@@ -33,6 +33,10 @@ class GroupsController < ApplicationController
   private
   def group_params
     params.require(:group).permit(:name, user_ids:[])
+  end
+
+  def set_current_group
+    @group = Group.find(params[:id])
   end
 
 end
