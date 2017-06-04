@@ -1,7 +1,7 @@
 
 # **DB設計**
 
-usersとgroupsが多対多の関係のため中間テーブルをusers_groupsテーブルとする。
+usersとgroupsが多対多の関係のため中間テーブルをuser_groupsテーブルとする。
 
 ## **users table**
 
@@ -12,7 +12,7 @@ usersとgroupsが多対多の関係のため中間テーブルをusers_groupsテ
 #### **Asociation**
 has_many messages
 has_many groups
-has_many groups, through :users_groups
+has_many groups, through :user_groups
 
 ## **groups table**
 
@@ -23,7 +23,7 @@ has_many groups, through :users_groups
 #### **Asociation**
 has_many messages
 has_many users
-has_many users, through :users_groups
+has_many users, through :user_groups
 
 ## **user_groups table**
 
