@@ -2,6 +2,11 @@ class GroupsController < ApplicationController
 
   before_action :set_current_group, only: [:edit, :update]
 
+  def index
+    @message = "aaaa"
+    @groups = current_user.groups
+  end
+
   def new
     @group = Group.new
   end
