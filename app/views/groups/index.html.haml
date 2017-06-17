@@ -1,0 +1,20 @@
+.chat-side
+  .chat-user
+    %h5.chat-user__name
+      = current_user.name
+    .chat-user__actions
+      =link_to new_group_path ,class: "chat-user__actions--action" do
+        = fa_icon "pencil-square-o"
+      =link_to edit_user_registration_path ,class: "chat-user__actions--action" do
+        = fa_icon "cog"
+  %ul.chat-groups
+    - @groups.each do |group|
+      =link_to group_messages_path(group.id) do
+        %li.chat-groups__group
+          %p.chat-groups__group--name
+            = group.name
+          %p.chat-groups__group--message
+            -if group.messages.last
+              ="#{group.messages.last.body}"
+            -else
+              まだメッセージはありません

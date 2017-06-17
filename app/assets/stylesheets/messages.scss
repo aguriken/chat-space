@@ -178,8 +178,9 @@ html,body{
     }
   }
   &__send-btn{
-    float: left;
-    display: inline-block;
+    position:absolute;
+    top:0px;
+    right:-115px;
     width: 100px;
     margin-left: 15px;
     line-height: 50px;
