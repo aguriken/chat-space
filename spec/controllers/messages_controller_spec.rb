@@ -7,7 +7,6 @@ describe MessagesController do
   let(:groups){user.groups}
   let(:message){user.messages}
   let(:messages){create_list(user.messages, 3)}
-  # let(:group_members){group.users}
 
   before do
     sign_in user
@@ -35,20 +34,13 @@ describe MessagesController do
       expect(assigns(:messages)).to match group.messages
     end
 
-    # it "assign the requested current_group to @group_members" do
-    #   binding.pry
-    #   expect(assigns(:group_members)).to match group_members
-    # end
-
   end
 
   describe "GET #create" do
     context "message is saved" do
 
       it "message is saved in the database" do
-        expect{
-          post :create, group_id: group, message: attributes_for(:message)
-        }.to change(Message, :count).by(1)
+        expect{post :create, group_id: group, message: attributes_for(:message)}.to change(Message, :count).by(1)
       end
 
       it "renders the :index template" do
@@ -59,9 +51,7 @@ describe MessagesController do
     context "message is not saved" do
 
       it "message is not saved in the database" do
-        expect{
-          post :create, group_id: group.id, message: attributes_for(:message, body: nil)
-        }.to_not change(Message, :count)
+        expect{post :create, group_id: group.id, message: attributes_for(:message, body: nil)}.to_not change(Message, :count)
       end
 
       it "renders the :index template" do
