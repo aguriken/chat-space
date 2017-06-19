@@ -4,3 +4,4 @@ FactoryGirl.define do
     group       Faker::Number.number(1)
   end
 end
+
