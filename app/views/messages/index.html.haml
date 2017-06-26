@@ -43,7 +43,7 @@
             = message.body
   .chat-footer
     .chat-footer__body
-      = form_for [@group, @message] do |f|
+      = form_for [@group, @message], html: { class: 'js-form' } do |f|
         = f.text_area :body , placeholder: "type a message",  class: 'chat-footer__body--text', rows: 1
         = f.label :image, class: "chat-footer__body--file" do
           = fa_icon "picture-o"
