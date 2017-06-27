@@ -39,7 +39,7 @@
               %p.chat-messages__message__header--name
                 = message.user.name
               %p.chat-messages__message__header--time
-                = message.created_at
+                = message_date(message)
             %p.chat-messages__message__content
               = message.body
   .chat-footer
