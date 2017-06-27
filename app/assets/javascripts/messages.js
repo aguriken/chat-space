@@ -19,11 +19,8 @@ $(function() {
 
   $('.js-form').on('submit', function(e) {
     e.preventDefault();
-    console.log(this)
     var formData = new FormData(this);
-    console.log( formData );
     var href = window.location.href
-    console.log (href)
     $.ajax({
       url: href,
       type: "POST",
@@ -33,14 +30,12 @@ $(function() {
       contentType: false
     })
     .done(function(data){
-      console.log("seiko");
       var html = buildHTML(data);
-      console.log(html);
       $('.chat-messages-list').append(html)
       $('.chat-footer__body--text').val('')
     })
-    .fail(function(){
-      alert('error');
+    .fail(function(data){
+      alert("メッセージを入力してください。");
     })
   })
 });
