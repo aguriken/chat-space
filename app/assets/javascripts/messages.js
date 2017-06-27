@@ -1,4 +1,18 @@
 $(function() {
+  function buildHTML(message) {
+
+    var html = `<p class="chat-messages__message__header--name" id="li">
+                  ${ message.name }
+                </p>
+                <p class="chat-messages__message__header--time" id="li">
+                  ${ message.date }
+                </p>
+                <p class="chat-messages__message__content" id="li">
+                  ${ message.body }
+                </p>`;
+    return html;
+  }
+  
   $('.js-form').on('submit', function(e) {
     e.preventDefault();
     var formDate = new FormDate(this);
