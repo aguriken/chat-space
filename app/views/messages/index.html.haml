@@ -32,15 +32,16 @@
       = link_to 'Edit', edit_group_path(params[:group_id]) , class: "chat-header__right__edit-btn"
   .chat-body
     %ul.chat-messages
-      -@group.messages.each do |message|
-        %li.chat-messages__message
-          .chat-messages__message__header
-            %p.chat-messages__message__header--name
-              = message.user.name
-            %p.chat-messages__message__header--time
-              = message.created_at
-          %p.chat-messages__message__content
-            = message.body
+      .chat-messages-list
+        -@group.messages.each do |message|
+          %li.chat-messages__message
+            .chat-messages__message__header
+              %p.chat-messages__message__header--name
+                = message.user.name
+              %p.chat-messages__message__header--time
+                = message.created_at
+            %p.chat-messages__message__content
+              = message.body
   .chat-footer
     .chat-footer__body
       = form_for [@group, @message], html: { class: 'js-form' } do |f|
