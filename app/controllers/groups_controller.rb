@@ -36,7 +36,8 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name, user_ids:[])
+    new_users_id = params[:group][:user_ids].uniq
+    params.require(:group).merge(user_ids: new_users_id).permit(:name, { user_ids: [] } )
   end
 
   def set_users
