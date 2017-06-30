@@ -1,0 +1,6 @@
+%li.chat-group-user
+  .chat-group-user__name
+    = user.name
+  .chat-group-user__btn.chat-group-user__btn--remove
+    削除
+  = hidden_field_tag('group[user_ids][]', user.id)
