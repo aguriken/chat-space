@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
 
+  before_action :set_users, only: [:new, :edit]
   before_action :set_current_group, only: [:edit, :update]
 
   def index
@@ -8,7 +9,6 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    @users = User.all
   end
 
   def create
@@ -22,8 +22,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @users = User.all
-    @group_users = @group.users
+    @group_users = @group.users.where.not(id: current_user.id)
   end
 
   def update
@@ -37,7 +36,12 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name, user_ids:[])
+    new_users_id = params[:group][:user_ids].uniq
+    params.require(:group).merge(user_ids: new_users_id).permit(:name, { user_ids: [] } )
+  end
+
+  def set_users
+    @users = User.all
   end
 
   def set_current_group
