@@ -56,4 +56,9 @@ gem 'erb2haml'
 gem "font-awesome-rails"
 gem 'devise'
 gem 'pry-rails'
+gem 'carrierwave'
+gem 'fog'
+gem 'dotenv'
+gem 'mini_magick'
+
 
