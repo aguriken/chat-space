@@ -40,6 +40,8 @@
                 = message.user.name
               %p.chat-messages__message__header--time
                 = message_date(message)
+            %p.chat-messages__message__header--picture
+              = image_tag message.image
             %p.chat-messages__message__content
               = message.body
   .chat-footer
@@ -48,4 +50,5 @@
         = f.text_area :body , placeholder: "type a message",  class: 'chat-footer__body--text', rows: 1
         = f.label :image, class: "chat-footer__body--file" do
           = fa_icon "picture-o"
+          = f.file_field :image, class: 'chat-footer__body--image', style: "display:none;"
         = f.submit "Send" , class: "chat-footer__send-btn"
