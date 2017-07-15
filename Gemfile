@@ -58,7 +58,7 @@ gem 'devise'
 gem 'pry-rails'
 gem 'carrierwave'
 gem 'fog'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'mini_magick'
 
 
