@@ -5,5 +5,5 @@ class Message < ApplicationRecord
 
 # validation
   validates_presence_of :body, :user_id, :group_id
-  mount_uploader :data, ImageUploader
+  mount_uploader :image, ImageUploader
 end
