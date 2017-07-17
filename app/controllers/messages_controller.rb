@@ -5,6 +5,10 @@ class MessagesController < ApplicationController
     @groups = current_user.groups
     @message = Message.new
     @messages = @group.messages
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create

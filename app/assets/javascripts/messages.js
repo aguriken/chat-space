@@ -53,4 +53,25 @@ $(document).on('turbolinks:load', function() {
       $('input').prop('disabled', false);
     })
   })
+
+  setInterval(update, 5000);
+  function update() {
+    var href = window.location.href
+    console.log(href);
+    if(document.URL.match("/messages")) {
+      $.ajax({
+        url: href,
+        type: 'GET',
+        dataType: 'json',
+      })
+      .done(function(data){
+        var html = buildHTML(data);
+        console.log(html);
+        $('.chat-messagses-list').append(html)
+      })
+      .fail(function(){
+        alert('error');
+      });
+    }
+  }
 });
