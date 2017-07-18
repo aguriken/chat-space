@@ -1,0 +1,9 @@
+= link_to group_messages_path(group.id) do
+  %li.chat-groups__group
+    %p.chat-groups__group--name
+      = group.name
+    %p.chat-groups__group--message
+      -if group.messages.last
+        ="#{group.messages.last.body}"
+      -else
+        まだメッセージはありません
