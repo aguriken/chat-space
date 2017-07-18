@@ -1,10 +1,8 @@
 class MessagesController < ApplicationController
 
+  before_action :set_varriable, only: [:index]
+
   def index
-    @group = Group.find(params[:group_id])
-    @groups = current_user.groups
-    @message = Message.new
-    @messages = @group.messages
     respond_to do |format|
       format.html
       format.json
@@ -26,6 +24,13 @@ class MessagesController < ApplicationController
   private
   def message_params
     params.require(:message).permit(:body, :image).merge(group_id: params[:group_id], user_id: current_user.id)
+  end
+
+  def set_varriable
+    @group = Group.find(params[:group_id])
+    @groups = current_user.groups.includes(:messages)
+    @message = Message.new
+    @messages = @group.messages
   end
 
 end
