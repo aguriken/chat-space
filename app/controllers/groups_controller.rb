@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   before_action :set_current_group, only: [:edit, :update]
 
   def index
-    @groups = current_user.groups
+    @groups = current_user.groups.includes(:messages)
   end
 
   def new
