@@ -8,16 +8,8 @@
       = link_to edit_user_registration_path ,class: "chat-user__actions--action" do
         = fa_icon "cog"
   %ul.chat-groups
-    - @groups.each do |group|
-      = link_to group_messages_path(group.id) do
-        %li.chat-groups__group
-          %p.chat-groups__group--name
-            = group.name
-          %p.chat-groups__group--message
-            -if group.messages.last
-              ="#{group.messages.last.body}"
-            -else
-              まだメッセージはありません
+    = render partial: "groups/group-lists", collection: @groups, as: :group
+
 .chat-main
   .chat-header
     .chat-header__left
@@ -30,20 +22,13 @@
             ="#{member.name}"
     .chat-header__right
       = link_to 'Edit', edit_group_path(params[:group_id]) , class: "chat-header__right__edit-btn"
+
   .chat-body
     %ul.chat-messages
       .chat-messages-list
-        -@group.messages.each do |message|
-          %li.chat-messages__message
-            .chat-messages__message__header
-              %p.chat-messages__message__header--name
-                = message.user.name
-              %p.chat-messages__message__header--time
-                = message_date(message)
-            %p.chat-messages__message__header--picture
-              = image_tag message.image
-            %p.chat-messages__message__content
-              = message.body
+        = render @messages
+        / = render partial: 'message', collection: @messages, as: :message 上記と同じことを確認するためのコード
+
   .chat-footer
     .chat-footer__body
       = form_for [@group, @message], html: { class: 'js-form' } do |f|
